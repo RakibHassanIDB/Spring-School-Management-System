@@ -1,0 +1,67 @@
+.title-text h4{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.input-field{
+    margin: 10px;
+    padding-right: 25px;
+}
+
+.input-field input,select{
+    font-size: 16px;
+}
+.btn{
+    margin: 10px 20px;
+}
+.card{
+    margin-bottom: 20px;
+}
+
+.table-dark th,td{
+    text-align: center;
+}
+
+.school-title{
+    position: relative;
+    left:55px;
+    height: 50px;
+    font-family: 'Righteous', cursive;
+    width: 950px;
+    background: #222222;
+    border-radius: 15px;
+    box-shadow: 0 3px 2px 3px rgba(1, 163, 164,.5);
+    transition: .4s all ease-in-out;
+    max-width: 1000px;
+}
+
+.school-title:hover{
+    box-shadow: none;
+    color:white;
+}
+
+.school-title h4{
+    font-size: 30px;
+    color:aquamarine;
+    letter-spacing: 4px;
+    transition: .4s all ease-in-out;
+}
+
+.school-title h4:hover{
+    color:white;
+}
+
+
+#fileToUpload{
+    margin: 0;
+    padding:15px 10px;
+    font-size: 16px;
+    color:black;
+    border:2px solid tomato;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+}
+

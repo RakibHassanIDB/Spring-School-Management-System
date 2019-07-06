@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="classroutine" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c829d5f1-76b7-412c-98fb-9b062ff98f3c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="classname" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="secname" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     classroutine.`dayname` AS classroutine_dayname,
+     classroutine.`periodname` AS classroutine_periodname,
+     classroutine.`periodtime` AS classroutine_periodtime,
+     classname.`classname` AS classname_classname,
+     classsection.`secname` AS classsection_secname,
+     subjects.`subjectcode` AS subjects_subjectcode,
+     subjects.`subjectname` AS subjects_subjectname
+FROM
+     `classname` classname INNER JOIN `classroutine` classroutine ON classname.`classid` = classroutine.`classid`
+     INNER JOIN `classsection` classsection ON classroutine.`secid` = classsection.`secid`
+     INNER JOIN `subjects` subjects ON classroutine.`subjectid` = subjects.`subjectid`
+where classname.`classname` = $P{classname} and classsection.`secname`=$P{secname}]]>
+	</queryString>
+	<field name="classroutine_dayname" class="java.lang.String"/>
+	<field name="classroutine_periodname" class="java.lang.String"/>
+	<field name="classroutine_periodtime" class="java.lang.String"/>
+	<field name="classname_classname" class="java.lang.String"/>
+	<field name="classsection_secname" class="java.lang.String"/>
+	<field name="subjects_subjectcode" class="java.lang.String"/>
+	<field name="subjects_subjectname" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="175" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="140" uuid="0aa4a8db-2c7a-42d9-b91c-6a1fbe5a45a2"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="41" uuid="0e84ae49-8a81-4480-9832-2952190f0dc2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Baskerville Old Face" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Badda Alatunnesa School & College]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="802" height="29" uuid="d9fde659-1faf-4545-94a3-f1cf6c3bb947"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Baskerville Old Face" size="20"/>
+				</textElement>
+				<text><![CDATA[Gulshan, Dhaka-1212]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="802" height="32" uuid="becb98cc-f335-4fae-9e7a-ba36772bbf0a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Baskerville Old Face" size="20"/>
+				</textElement>
+				<text><![CDATA[ESTD : 1966]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="121" width="802" height="54" forecolor="#FFFFFF" backcolor="#006666" uuid="519e3a9e-15ee-429d-8ec1-33d06dc717ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Baskerville Old Face" size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class Routine]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="100" height="20" uuid="d153e5f4-a0db-4d95-8d01-41cfecb02c7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="15" width="100" height="20" uuid="8ef33a72-ab02-447c-8529-f0dab599a89e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="243" y="15" width="100" height="20" uuid="83d2857f-d8c0-4d2b-8e7c-688c50969fe2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Section]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="15" width="100" height="20" uuid="c62944ba-1bf3-4c12-a749-3a720e75446b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Period]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="15" width="100" height="20" uuid="7811470c-98b6-4ebd-8fa7-23779fb1a6ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="588" y="15" width="100" height="20" uuid="696a67cc-cd26-4e48-b968-0080d21f5cea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="15" width="100" height="20" uuid="1c5beff6-321b-4d1e-8df5-1efb78fbe53c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Period Time]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a382392c-d54a-453d-88b5-d69525dba390"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classroutine_dayname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="0" width="100" height="20" uuid="99e731ba-572b-4b3d-bee5-a3f2a8bddc49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classname_classname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="100" height="20" uuid="7484d2a9-cef5-4471-9cfb-b5141f165b02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classroutine_periodname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="0" width="100" height="20" uuid="c39b4fb9-45f3-44b3-845f-5a5d6e390f2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classsection_secname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="0" width="100" height="20" uuid="a0539e81-831d-4353-92b9-78d20369336f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjects_subjectcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="588" y="0" width="100" height="20" uuid="64ed90fe-0c28-4820-8e83-2e69fbe50047"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjects_subjectname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="0" width="100" height="20" uuid="52adf4b0-39a3-4ba8-b2d1-2d269f86c2c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classroutine_periodtime}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

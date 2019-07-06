@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="attendencereport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e9d561a-fd2e-4dbc-a84b-bc44a4975b00">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="classname" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="atdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     studentattendance.`atdate` AS studentattendance_atdate,
+     studentattendance.`atstatus` AS studentattendance_atstatus,
+     classname.`classname` AS classname_classname,
+     stgroup.`groupname` AS stgroup_groupname,
+     studentregistration.`stroll` AS studentregistration_stroll,
+     classsection.`secname` AS classsection_secname,
+     studentregistration.`regid` AS studentregistration_regid,
+     studentinfo.`stname` AS studentinfo_stname
+FROM
+     `classname` classname INNER JOIN `studentattendance` studentattendance ON classname.`classid` = studentattendance.`classid`
+     INNER JOIN `stgroup` stgroup ON studentattendance.`groupid` = stgroup.`groupid`
+     INNER JOIN `studentregistration` studentregistration ON studentattendance.`regid` = studentregistration.`regid`
+     INNER JOIN `classsection` classsection ON studentattendance.`secid` = classsection.`secid`
+     INNER JOIN `studentinfo` studentinfo ON studentattendance.`stid` = studentinfo.`stid`
+WHERE
+     classname.`classname` = $P{classname}
+     and studentattendance.`atdate` = $P{atdate}]]>
+	</queryString>
+	<field name="studentattendance_atdate" class="java.sql.Date"/>
+	<field name="studentattendance_atstatus" class="java.lang.String"/>
+	<field name="classname_classname" class="java.lang.String"/>
+	<field name="stgroup_groupname" class="java.lang.String"/>
+	<field name="studentregistration_stroll" class="java.lang.String"/>
+	<field name="classsection_secname" class="java.lang.String"/>
+	<field name="studentregistration_regid" class="java.lang.Integer"/>
+	<field name="studentinfo_stname" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="199" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="4a025ce7-e051-4e87-a78b-5bf00595863b" x="0" y="0" width="801" height="183"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="026162b5-4a85-4281-8391-18a7a9fbe76e" x="1" y="0" width="800" height="53"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bodoni MT" size="36"/>
+				</textElement>
+				<text><![CDATA[Badda Alatunnesa School & College]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2f45f1ae-54c7-4e5c-9aa4-7da1838ec456" x="5" y="53" width="800" height="28"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bodoni MT" size="20"/>
+				</textElement>
+				<text><![CDATA[Gulshan, Dhaka-1212]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="583d6fe3-844f-4415-bdda-3a04a7d2747f" x="5" y="81" width="796" height="38"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bodoni MT" size="20"/>
+				</textElement>
+				<text><![CDATA[ESTD : 1966]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="222d0bff-4dce-42c9-8b9d-fc7d88fa6895" mode="Opaque" x="6" y="131" width="796" height="38" forecolor="#FFFFFF" backcolor="#003333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Attendence List]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="c4fea599-eed0-4286-a213-4ee7923fc6cc" x="580" y="169" width="209" height="30"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9f9d2e9c-5d72-4966-b283-b36572ccace7" x="11" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roll]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="599fd971-2cdb-4c57-b001-d34a57a5ea74" x="100" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8fae9709-96d8-4228-8855-3cf04d850beb" x="201" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fe96d976-4004-4cde-a637-063975b8a433" x="309" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="08f69009-301d-4629-835a-fc7061635c4d" x="408" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Section]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0799050a-79fc-4d89-b08c-32c63245e190" x="526" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Group]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="228df475-2e37-4e98-ba48-93639d5fc2b7" x="622" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="da5c0272-790c-4017-89db-4908640502bf" x="728" y="15" width="54" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8588bbfd-7983-4e23-a0cb-097b7b5e810d" x="605" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentattendance_atdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9f6430dc-0ebb-4efd-b8bd-45c3a201a8cb" x="705" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentattendance_atstatus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="437bf289-1366-4ddd-8ea0-64b78d9516c8" x="286" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classname_classname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fcf28201-24f8-4669-be0a-ff776299bebf" x="505" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stgroup_groupname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="73c5dae5-1abc-47b6-93ba-3c2b0a957d78" x="1" y="0" width="74" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentregistration_stroll}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d5c676ae-9418-4aff-9c82-7be2ce500d0b" x="386" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classsection_secname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="24d39266-295b-435b-b02e-f752ecee1742" x="75" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentregistration_regid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2bdb0393-8414-4e37-9027-8a4c04dbdd8b" x="175" y="0" width="111" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentinfo_stname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

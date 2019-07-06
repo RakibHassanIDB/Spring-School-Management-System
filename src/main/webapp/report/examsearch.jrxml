@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="examsearch" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f65d1901-d646-4ab1-88d9-261d51b16852">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="exams" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     examinfo.`examdate` AS examinfo_examdate,
+     examinfo.`examdesc` AS examinfo_examdesc,
+     examinfo.`examtitle` AS examinfo_examtitle
+FROM
+     `examinfo` examinfo
+where examinfo.`examtitle` = $P{exams}]]>
+	</queryString>
+	<field name="examinfo_examdate" class="java.sql.Date"/>
+	<field name="examinfo_examdesc" class="java.lang.String"/>
+	<field name="examinfo_examtitle" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="172" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="172" uuid="6bb65fc6-1852-4470-b345-d50dc8056297"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="43" uuid="48a3947e-32bf-4b98-9cee-7a379e904b6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="30"/>
+				</textElement>
+				<text><![CDATA[Badda Alatunnesa School & College]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="43" width="228" height="27" uuid="13efd7b5-5e40-437b-891d-ab4809684a9d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gulshan, Dhaka-1212]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="70" width="228" height="27" uuid="40906cdb-9eeb-47b7-888e-ad5b600e1676"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTD : 1966]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="133" width="802" height="39" forecolor="#FFFFFF" backcolor="#003333" uuid="39fbc4b0-4b0e-4690-8055-4ec5e85c421b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exam Information]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="15" width="143" height="20" uuid="81621641-120d-41b9-897c-2427aeb52b49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exam Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="15" width="143" height="20" uuid="cc78fa61-7053-4e3f-9488-441f10fa7d06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exam Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="15" width="143" height="20" uuid="477db2c5-b266-4b82-9545-17af9f1a09de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exam Description]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="485" y="0" width="100" height="20" uuid="dfa9b306-d1df-4388-ba65-7d7a5a3fb800"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{examinfo_examdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="0" width="100" height="20" uuid="36d9fdea-2d1a-4f00-98e3-7354cbb9450c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{examinfo_examdesc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="51" y="0" width="100" height="20" uuid="e87ba18f-b428-41f4-8d01-fd089deee27e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{examinfo_examtitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

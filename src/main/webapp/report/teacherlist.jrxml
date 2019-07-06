@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="teacherlist" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8fdda9d0-7b33-4c4b-97d4-e5307786d86e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tname" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     teacherinfo.`tid` AS teacherinfo_tid,
+     teacherinfo.`taddress` AS teacherinfo_taddress,
+     teacherinfo.`tcontact` AS teacherinfo_tcontact,
+     teacherinfo.`temail` AS teacherinfo_temail,
+     teacherinfo.`tgender` AS teacherinfo_tgender,
+     teacherinfo.`tjoindate` AS teacherinfo_tjoindate,
+     teacherinfo.`tname` AS teacherinfo_tname,
+     teacherinfo.`tstatus` AS teacherinfo_tstatus,
+     subjects.`subjectname` AS subjects_subjectname
+FROM
+     `subjects` subjects INNER JOIN `teacherinfo` teacherinfo ON subjects.`subjectid` = teacherinfo.`subjectid`
+WHERE
+     teacherinfo.`tname` = $P{tname}]]>
+	</queryString>
+	<field name="teacherinfo_tid" class="java.lang.Integer"/>
+	<field name="teacherinfo_taddress" class="java.lang.String"/>
+	<field name="teacherinfo_tcontact" class="java.lang.String"/>
+	<field name="teacherinfo_temail" class="java.lang.String"/>
+	<field name="teacherinfo_tgender" class="java.lang.String"/>
+	<field name="teacherinfo_tjoindate" class="java.sql.Date"/>
+	<field name="teacherinfo_tname" class="java.lang.String"/>
+	<field name="teacherinfo_tstatus" class="java.lang.String"/>
+	<field name="subjects_subjectname" class="java.lang.String"/>
+	<variable name="totalteacher" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{teacherinfo_tid}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="43" uuid="603f263a-15ab-4a51-b844-b03b661fa486"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Badda Alatunnesa School & College]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="43" width="155" height="20" uuid="a4d9d055-b5f2-498b-8d61-5097d9e39656"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Gulshan, Dhaka-1212]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="63" width="100" height="20" uuid="fd8ff46e-b4c3-4dc6-93ca-61ca70bcce7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ESTD: 1966]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="2" width="802" height="33" forecolor="#FFFFFF" backcolor="#003333" uuid="a5e2dcc5-3037-4a1a-bcf3-2f2e726fa509"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teacher Information]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8d30db5b-0990-4f09-b951-49e110c25b33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="0" width="114" height="20" uuid="29222c72-80d6-4061-ac41-f8f844512f08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="0" width="100" height="20" uuid="51e5e41b-948b-42bc-8d67-7f4fba104c0b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="100" height="20" uuid="87ad6047-6aa5-44d3-960d-84293365a6a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contact]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="583" y="0" width="100" height="20" uuid="3d843f65-9cee-4ca7-b63f-b24a9dfa4dff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="683" y="0" width="119" height="20" uuid="f9ea41b3-2d2f-45aa-aed3-22b3a09fe46c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Job Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="462" y="0" width="100" height="20" uuid="e8cd788c-b586-4dfe-b3ce-c14e6cac28a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email Address]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="114" height="20" uuid="dd9d9805-9dc0-4ee3-ba6d-176fbbfe9024"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{teacherinfo_tname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="114" y="0" width="114" height="20" uuid="0713a9a9-daba-4301-9c50-1a239ddb350b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{teacherinfo_taddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="0" width="73" height="20" uuid="d572a640-b358-4f99-b0e1-3c343d35fb56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{teacherinfo_tgender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="0" width="100" height="20" uuid="4b5dff44-a918-4dde-b2aa-62a574c12ae2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{teacherinfo_tcontact}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="0" width="100" height="20" uuid="c990ece2-976f-4109-b9e9-448068c95b45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{teacherinfo_temail}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="683" y="0" width="119" height="20" uuid="66e2b706-807a-4aff-bd88-eb92dff5ae9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{teacherinfo_tstatus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="583" y="0" width="100" height="20" uuid="2cbbb2db-3c31-47ad-ad1f-7f86232baa27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjects_subjectname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="583" y="0" width="100" height="20" uuid="ab99e49f-ac68-472a-aeb5-29d0ebed552c"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Teacher:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="702" y="0" width="100" height="20" forecolor="#006666" uuid="72b3e4a4-f339-4d05-b6c7-fffb90a03df2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalteacher}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

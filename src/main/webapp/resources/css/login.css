@@ -1,0 +1,128 @@
+body{
+    margin: 0;
+    padding: 0;
+    height:100%;
+    background: #161616;
+    overflow: hidden;
+}
+
+.container{
+    position: absolute;
+    top:30px;
+    left:465px;
+    width: 450px;
+    height: auto;
+    overflow: hidden;
+}
+
+.user_card {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #f39c12;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: #60a3bc;
+    padding: 10px;
+    text-align: center;
+}
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.form_container {
+    margin-top: 100px;
+}
+.login_btn {
+    width: 100%;
+    background: #c0392b !important;
+    color: white !important;
+    transition: .3s all ease-in-out;
+}
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.login_btn:hover{
+    background: #0072A5 !important;
+    color:white !important;
+}
+.login_container {
+    padding: 0 2rem;
+}
+.input-group-text {
+    background: #c0392b !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #c0392b !important;
+}
+
+
+.homebutton{
+    position: absolute;
+    margin: 0;
+    width: 20%;
+    height: 20px;
+    top:10px;
+    left:5px;
+    text-align: center;
+}
+
+.homebutton a{
+    text-align: center;
+}
+
+input[type="email"]{
+    margin-bottom: 20px;
+}
+
+.card-header{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card-header-logo{
+    margin: 10px 0px;
+}
+
+.sign a{
+    list-style: none;
+    text-decoration: none;
+    font-size: 18px;
+    color:black;
+    font-weight: 600;
+    text-align: center;
+    transition: .3s all ease-in-out;
+}
+
+.sign a:hover{
+    color:tomato;
+}

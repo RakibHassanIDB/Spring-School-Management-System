@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="paymentreport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91c53648-0b3d-46bf-a705-bd1be7a457d3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="startdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="enddate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     payment.`payammount` AS payment_payammount,
+     payment.`paydate` AS payment_paydate,
+     payment.`payofmonth` AS payment_payofmonth,
+     studentregistration.`stroll` AS studentregistration_stroll,
+     academicyear.`accyear` AS academicyear_accyear,
+     classname.`classid` AS classname_classid,
+     classname.`classname` AS classname_classname,
+     classname.`status` AS classname_status,
+     classname_A.`classname` AS classname_A_classname,
+     studentinfo.`stname` AS studentinfo_stname,
+     studentinfo.`stcontact` AS studentinfo_stcontact
+FROM
+     `studentregistration` studentregistration INNER JOIN `payment` payment ON studentregistration.`regid` = payment.`regid`
+     INNER JOIN `academicyear` academicyear ON payment.`yearid` = academicyear.`yearid`
+     INNER JOIN `classname` classname_A ON studentregistration.`classid` = classname_A.`classid`
+     INNER JOIN `studentinfo` studentinfo ON studentregistration.`stid` = studentinfo.`stid`,
+     `classname` classname
+where payment.`paydate` between  $P{startdate} and $P{enddate}]]>
+	</queryString>
+	<field name="payment_payammount" class="java.lang.Double"/>
+	<field name="payment_paydate" class="java.sql.Date"/>
+	<field name="payment_payofmonth" class="java.lang.String"/>
+	<field name="studentregistration_stroll" class="java.lang.String"/>
+	<field name="academicyear_accyear" class="java.lang.String"/>
+	<field name="classname_classid" class="java.lang.Integer"/>
+	<field name="classname_classname" class="java.lang.String"/>
+	<field name="classname_status" class="java.lang.String"/>
+	<field name="classname_A_classname" class="java.lang.String"/>
+	<field name="studentinfo_stname" class="java.lang.String"/>
+	<field name="studentinfo_stcontact" class="java.lang.String"/>
+	<variable name="payamount" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{payment_payammount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="170" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="170" uuid="e3959f79-4fc3-4d7b-a56c-f6ed811297aa"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="46" uuid="106c3158-25ee-4447-a4af-d781ae2ab4d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="30"/>
+				</textElement>
+				<text><![CDATA[Badda Alatunnesa School & College]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="46" width="169" height="20" uuid="df626154-4596-4daa-962e-31367f43d444"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Gulshan, Dhaka-1212]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="66" width="169" height="20" uuid="45d1cf1b-7636-48e0-9f8e-31eaf8dba900"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ESTD : 1966]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="134" width="802" height="36" forecolor="#FFFFFF" backcolor="#003333" uuid="a8ab54b9-cd2c-4d6d-9507-f91c288ed64b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Payment Report]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="593" y="114" width="209" height="20" uuid="4c49fa56-aa4c-45ea-aab8-4549c028546b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="23055dfb-b0f7-4541-a898-b1cee5ac3820"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="41" width="100" height="20" uuid="2ad5cc10-6c9c-4823-ab8a-545577828e31"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="41" width="100" height="20" uuid="c17cc214-2c99-467f-b583-d7e3a5e8de9b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="41" width="100" height="20" uuid="10595fc8-dc93-4ef6-b46a-04184edb9170"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roll No;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="41" width="100" height="20" uuid="67e1b464-f329-4f6e-b0ab-cd69a7b60c55"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="555" y="41" width="100" height="20" uuid="52ce710f-1d09-4e98-91ca-dab64a7e9881"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="673" y="41" width="100" height="20" uuid="ec512aaa-3c40-4ae1-9227-14b929078824"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="99235114-dd8a-4218-b153-5e97f82a840b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{academicyear_accyear}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="100" height="20" uuid="b91366bc-1f57-48bf-96f2-5544af3d4d18"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_payofmonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="0" width="100" height="20" uuid="f495b803-8d31-461e-bbc4-0c3cdb646acc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentinfo_stname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="0" width="100" height="20" uuid="c2ac46c4-93fe-406f-93fc-c7bc9e9d6636"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentregistration_stroll}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="447" y="0" width="100" height="20" uuid="192c99a0-0394-4264-8435-10cd54737c78"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classname_classname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="555" y="0" width="100" height="20" uuid="346565e0-3e4a-4fb0-a2ef-a4474dea799a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_paydate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="673" y="0" width="100" height="20" uuid="376bb04c-8e8f-4142-a071-ba860bacdf63"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_payammount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<rectangle>
+				<reportElement x="655" y="0" width="129" height="45" forecolor="#FF0000" uuid="443f5f71-0448-4fa0-a19b-716ff72d8104"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="447" y="0" width="208" height="45" uuid="008246fb-849a-417a-9b82-c4905c68309d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount=]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="655" y="0" width="129" height="45" forecolor="#FF0000" uuid="b9050467-bff9-45fd-aeeb-c6559194f55c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{payamount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

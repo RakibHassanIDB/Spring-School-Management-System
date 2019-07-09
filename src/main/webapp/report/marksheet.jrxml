@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\Users\\Shaheed\\Documents\\Jasper Report\\sms\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["https://github.com/RakibHassanIDB/Spring-School-Management-System/raw/master/src/main/webapp/report"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
